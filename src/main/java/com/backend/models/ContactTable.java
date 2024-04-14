@@ -1,4 +1,4 @@
-package com.backend.Models;
+package com.backend.models;
 
 import org.hibernate.validator.constraints.Length;
 

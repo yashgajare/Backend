@@ -1,6 +1,6 @@
 package com.backend.Controller;
 
-import com.backend.Models.ProjectTable;
+import com.backend.models.ProjectTable;
 import com.backend.Services.ProjectServices;
 import com.backend.UtilityClasses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
