@@ -29,6 +29,12 @@ public class ProjectController {
         return new ResponseEntity<>(res,HttpStatusCode.valueOf(res.getStatusCode()));
     }
 
+    @PutMapping
+    public ResponseEntity<ApiResponse> updateProject(@RequestBody ProjectTable project){
+        ApiResponse<ProjectTable> res = projectServices.updateProject(project);
+        return new ResponseEntity<>(res,HttpStatusCode.valueOf(res.getStatusCode()));
+    }
+
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<ApiResponse> deleteProject(@PathVariable Integer id){
         ApiResponse<ProjectTable> res = projectServices.deleteProject(id);

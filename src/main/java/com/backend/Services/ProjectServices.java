@@ -38,4 +38,16 @@ public class ProjectServices {
         projectRepository.deleteById(id);
         return new ApiResponse<>(200,"success","Project Deleted successfully");
     }
+
+    public ApiResponse<ProjectTable> updateProject(ProjectTable project) {
+        Optional<ProjectTable> pt = projectRepository.findById(project.getId());
+        if(!pt.isPresent()) return new ApiResponse<>(400,"Failed","Project doesn't exits");
+        if(project.getDate()!=null && !project.getDate().isAfter(LocalDate.now())) pt.get().setDate(project.getDate());
+        if(project.getProjectType()!=null && !project.getProjectType().isEmpty()) pt.get().setProjectType(project.getProjectType());
+        if(project.getName()!=null && !project.getName().isEmpty()) pt.get().setName(project.getName());
+        if(project.getDescription()!=null && !project.getDescription().isEmpty()) pt.get().setDescription(project.getDescription());
+        if(project.getImageUrl()!=null && !project.getImageUrl().isEmpty()) pt.get().setImageUrl(project.getImageUrl());
+        projectRepository.save(pt.get());
+        return new ApiResponse<>(200,"success","Project edited successfully");
+    }
 }
