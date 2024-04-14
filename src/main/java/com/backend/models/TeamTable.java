@@ -1,4 +1,4 @@
-package com.backend.models;
+package com.backend.Models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,4 +23,54 @@ public class TeamTable {
 	private String about;
 	
 	private String ImageUrl;
+
+	public TeamTable(){}
+
+	public TeamTable(Integer id, String name, String designation, String about, String imageUrl) {
+		this.id = id;
+		this.name = name;
+		this.designation = designation;
+		this.about = about;
+		ImageUrl = imageUrl;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public String getAbout() {
+		return about;
+	}
+
+	public void setAbout(String about) {
+		this.about = about;
+	}
+
+	public String getImageUrl() {
+		return ImageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		ImageUrl = imageUrl;
+	}
 }
