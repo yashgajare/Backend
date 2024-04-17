@@ -68,9 +68,9 @@ public class ProjectServices {
         return new ApiResponse<>(200,"success","Project Deleted successfully");
     }
 
-    public ApiResponse<ProjectTable> updateProject(ProjectTable project, Integer id, MultipartFile file) {
+    public ApiResponse<ProjectTable> updateProject(ProjectTable project, MultipartFile file) {
         
-    	Optional<ProjectTable> pt = projectRepository.findById(id);
+    	Optional<ProjectTable> pt = projectRepository.findById(project.getId());
         System.out.println(project.getId());
         if(!pt.isPresent()) return new ApiResponse<>(400,"Failed","Project doesn't exists");
         

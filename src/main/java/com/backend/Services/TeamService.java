@@ -70,9 +70,9 @@ public class TeamService {
 		return new ApiResponse<>(200, "Success", "Member Deleted Successfully");
 	}
 	
-	public ApiResponse<TeamTable> updateMember(TeamTable member, Integer id, MultipartFile file){
+	public ApiResponse<TeamTable> updateMember(TeamTable member, MultipartFile file){
 		
-		Optional<TeamTable> mb = teamRepository.findById(id);
+		Optional<TeamTable> mb = teamRepository.findById(member.getId());
 
 		if(!mb.isPresent()) return new ApiResponse<TeamTable>(400, "failed", "Member Doesn't Exist!");
 		

@@ -1,4 +1,4 @@
-	package com.backend.Controller;
+package com.backend.Controller;
 
 import com.backend.models.ProjectTable;
 import com.backend.Services.ProjectServices;
@@ -31,9 +31,9 @@ public class ProjectController {
         return new ResponseEntity<>(res,HttpStatusCode.valueOf(res.getStatusCode()));
     }
 
-    @PutMapping(path = "/{id}")
-    public ResponseEntity<ApiResponse> updateProject(@ModelAttribute ProjectTable project, @PathVariable("id") Integer id, @RequestParam("image") MultipartFile file){
-        ApiResponse<ProjectTable> res = projectServices.updateProject(project, id, file);
+    @PutMapping
+    public ResponseEntity<ApiResponse> updateProject(@ModelAttribute ProjectTable project, @RequestParam("image") MultipartFile file){
+        ApiResponse<ProjectTable> res = projectServices.updateProject(project, file);
         return new ResponseEntity<>(res,HttpStatusCode.valueOf(res.getStatusCode()));
     }
 

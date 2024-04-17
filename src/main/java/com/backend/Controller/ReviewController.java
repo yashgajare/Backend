@@ -1,6 +1,7 @@
 package com.backend.Controller;
 
 
+import java.io.IOException;
 import java.util.List;
 
 import com.backend.Services.ReviewServices;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.backend.UtilityClasses.ApiResponse;
 import com.backend.models.ReviewTable;
 
@@ -25,20 +28,21 @@ public class ReviewController {
     }
 
     @PostMapping
-    public ResponseEntity<ApiResponse> addReview(@RequestBody ReviewTable review){
-        ApiResponse<ReviewTable> bg = ReviewService.addReview(review);
+    public ResponseEntity<ApiResponse> addReview(@ModelAttribute ReviewTable review, @RequestParam("image") MultipartFile file) throws IOException{
+        ApiResponse<ReviewTable> bg = ReviewService.addReview(review, file);
         return new ResponseEntity<>(bg, HttpStatusCode.valueOf(bg.getStatusCode()));
     }
 
-    @DeleteMapping
+    @DeleteMapping(path="/{id}")
     public ResponseEntity<ApiResponse> deleteReview(@PathVariable Integer id){
         ApiResponse<ReviewTable> bg = ReviewService.deleteReview(id);
         return new ResponseEntity<>(bg, HttpStatusCode.valueOf(bg.getStatusCode()));
     }
 
     @PutMapping
-    public ResponseEntity<ApiResponse> updateReview(@RequestBody ReviewTable review){
-        ApiResponse<ReviewTable> bg = ReviewService.updateReview(review);
+    public ResponseEntity<ApiResponse> updateReview(@ModelAttribute ReviewTable review, @RequestParam("image") MultipartFile file){ 
+    	
+        ApiResponse<ReviewTable> bg = ReviewService.updateReview(review, file);
         return new ResponseEntity<>(bg, HttpStatusCode.valueOf(bg.getStatusCode()));
     }
 

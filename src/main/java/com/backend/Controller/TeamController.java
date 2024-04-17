@@ -47,9 +47,9 @@ public class TeamController {
 		return new ResponseEntity<>(mb, HttpStatusCode.valueOf(mb.getStatusCode()));
 	}
 	
-	@PutMapping(path="/{id}")
-	public ResponseEntity<ApiResponse> updateMember(@ModelAttribute TeamTable member, @PathVariable("id") Integer id, @RequestParam("profileImage") MultipartFile file){
-		ApiResponse<TeamTable> mb = teamService.updateMember(member, id, file);
+	@PutMapping
+	public ResponseEntity<ApiResponse> updateMember(@ModelAttribute TeamTable member, @RequestParam("profileImage") MultipartFile file){
+		ApiResponse<TeamTable> mb = teamService.updateMember(member, file);
 		return new ResponseEntity<>(mb, HttpStatusCode.valueOf(mb.getStatusCode()));
 	}
 }
